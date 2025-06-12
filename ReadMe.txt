@@ -1,0 +1,3 @@
+-List products on click
+-Fetch information for that product
+-When I enter the product, images change on click
