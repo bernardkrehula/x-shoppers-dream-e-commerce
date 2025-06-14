@@ -3,6 +3,7 @@ import { manager } from './productsManager';
 
 
 export const productsContent = document.querySelector('.products-content');
+export const productDetails = document.querySelector('.product-content');
 
 productsContent.addEventListener('click', (e) => {
     const product = e.target.closest('li');

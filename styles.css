@@ -110,3 +110,65 @@ html {
     font-size: 2.8rem;
     margin-left: auto;
 }
+.product-content {
+    margin-top: 120px;
+}
+.backBtn {
+    width: 100%;
+    margin-bottom: 40px;
+}
+.backBtn button {
+    border: none;
+    border-radius: 10px;
+    font-size: 2.4rem;
+    padding: 13px 25px;
+    color: white;
+    background-color: rgb(214, 43, 226);
+}
+.content {
+    display: flex;
+    width: 100%;
+}
+.images{
+    width: 50%;
+}
+.main-ul {
+    display: grid;
+    gap: 10px;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    margin-top: 20px;
+    align-items: start;
+    list-style: none;
+}
+.main-ul li {
+    list-style-type: none;
+}
+.main-ul li img{
+    display: block;
+    object-fit: cover;
+    height: 120px;
+    width: 180px;
+    border-radius: 10px;
+}
+.writenContent {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    font-size: 3rem;
+    margin-left: 105px;
+    gap: 20px;
+}
+.writenContent h1 {
+    text-transform: capitalize;
+}
+.writenContent p{
+    font-size: 2.4rem;
+}
+.productImg {
+    display: block;
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 10px;
+}

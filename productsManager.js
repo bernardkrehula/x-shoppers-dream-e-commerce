@@ -1,4 +1,5 @@
 import { productsContent } from "./script";
+import { productDetails } from "./script";
 
 class Products  {
     constructor(){
@@ -15,9 +16,6 @@ class Products  {
         catch(error) {
             console.log('Greska kod dohvacanja proizvoda', error);
         }
-    }
-    getClickedProduct {
-
     }
 
     displayProuduct(product){
@@ -39,6 +37,9 @@ class Products  {
     }
     findProduct(productID){
         return this.products.find(product => product.id === productID);
+    }
+    displayProductDetails(){
+        
     }
 
 }
