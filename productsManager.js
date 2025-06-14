@@ -14,7 +14,6 @@ class Products  {
         }
         catch(error) {
             console.log('Greska kod dohvacanja proizvoda', error);
-            this.products = [];
         }
     }
 
@@ -25,7 +24,7 @@ class Products  {
                 <img src="${product.image}" alt="">
                 <div class="product-info">
                     <h3>${product.name}</h3>
-                    <h4>$${product.price}</h3>
+                    <h4>$${(product.price / 100).toFixed(2)}</h3>
                 </div>  
             </li>
         `;
