@@ -2,7 +2,7 @@ import { throttle } from 'throttle-debounce';
 import { manager } from './productsManager';
 
 
-const productsContent = document.querySelector('.products-content');
+export const productsContent = document.querySelector('.products-content');
 
 productsContent.addEventListener('click', () => {
     throttleFunc();

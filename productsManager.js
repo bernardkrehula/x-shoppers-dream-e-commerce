@@ -1,3 +1,5 @@
+import { productsContent } from "./script";
+
 class Products  {
     constructor(){
         this.products = [];
@@ -8,7 +10,7 @@ class Products  {
             const fetchProuct = await fetch('https://www.course-api.com/react-store-products');
             const proudtsData = await fetchProuct.json();
             this.products = proudtsData;
-            // this.iterateThroughProducts();
+            this.iterateThroughProducts();
         }
         catch(error) {
             console.log('Greska kod dohvacanja proizvoda', error);
@@ -16,14 +18,23 @@ class Products  {
         }
     }
 
-    displayProuduct(){
+    displayProuduct(product){
+        console.log(product)
         const html = `
+            <li id="${product.id}">
+                <img src="${product.image}" alt="">
+                <div class="product-info">
+                    <h3>${product.name}</h3>
+                    <h4>$${product.price}</h3>
+                </div>  
+            </li>
         `;
-
+        productsContent.insertAdjacentHTML('beforeend', html);
     }
-    iterateThroughProducts = async() => {
-        await this.getProducts();
-        this.products.forEach(this.products)
+    iterateThroughProducts(){
+        this.products.forEach(product => {
+            this.displayProuduct(product);
+        })
     }
 
 }

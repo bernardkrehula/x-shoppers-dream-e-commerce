@@ -84,6 +84,29 @@ html {
 .products-content {
     display: grid;
     gap: 40px;
-    grid-row-start: auto;
-    grid-template-columns: 2;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    margin-top: 100px;
+    align-items: start;
+    list-style: none;
+}
+.products-content img {
+    display: block;
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
+    border-radius: 10px;
+}
+.product-info {
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+}
+.product-info h3 {
+    font-size: 2.8rem;
+    text-transform: capitalize;
+}
+.product-info h4 {
+    font-size: 2.8rem;
+    margin-left: auto;
 }
