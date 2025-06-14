@@ -149,8 +149,9 @@ html {
     display: block;
     object-fit: cover;
     height: 120px;
-    width: 180px;
+    width: 100%;
     border-radius: 10px;
+    cursor: pointer;
 }
 .writenContent {
     display: flex;
@@ -165,6 +166,9 @@ html {
 }
 .writenContent p{
     font-size: 2.4rem;
+}
+.writenContent h5 {
+    text-transform: capitalize;
 }
 .productImg {
     display: block;

@@ -1,4 +1,5 @@
 import { productsContent } from "./script";
+import { main } from "./script";
 
 class Products  {
     constructor(){
@@ -6,6 +7,17 @@ class Products  {
         this.activeProduct = null;
     }
     getProducts = async() => {
+        try{
+            const fetchProuct = await fetch('https://www.course-api.com/react-store-products');
+            const proudtsData = await fetchProuct.json();
+            this.products = proudtsData;
+            this.iterateThroughProducts();
+        }
+        catch(error) {
+            console.log('Greska kod dohvacanja proizvoda', error);
+        }
+    }
+    getExtraProductsImg = async() => {
         try{
             const fetchProuct = await fetch('https://www.course-api.com/react-store-products');
             const proudtsData = await fetchProuct.json();
@@ -36,19 +48,21 @@ class Products  {
     }
     findProduct(productID){
         this.activeProduct = this.products.find(product => product.id === productID);
-        console.log(this.activeProduct)
     }
     displayProductDetails(productDetails){
         const product = this.activeProduct;
-        console.log(this.activeProduct)
+        console.log(product)
         const html = `
         <div class="backBtn">
                 <button>Back to Products</button>
             </div>
             <div class="content">
                 <div class="images">
-                    <img src="products-imgs/product-13.jpeg" alt="" class="productImg">
+                    <img src="${product.image}" alt="" class="productImg">
                     <ul class="main-ul">
+                        <li>
+                            <img src="${product.image}" alt="">
+                        </li>
                         <li>
                             <img src="products-imgs/product-13.jpeg" alt="">
                         </li>
@@ -64,18 +78,24 @@ class Products  {
                     </ul>
                 </div>
                 <div class="writenContent">
-                    <h1>armchair</h1>
-                    <h2>$125.99</h2>
-                    <p>Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge</p>
+                    <h1>${product.name}</h1>
+                    <h2>$${(product.price / 100).toFixed(2)}</h2>
+                    <p>${product.description}</p>
                     <h3>Available: In stock</h3>
                     <h4>SKU: recd1jIVIEChmiwhe</h4>
-                    <h5>Brand: Maros</h5>
+                    <h5>Brand: ${product.company}</h5>
                 </div>
             </div>
         `;
         
         productDetails.insertAdjacentHTML('beforeend', html);
-    } 
+    }
+    removeProducts(){
+        main.removeChild(productsContent);
+    }
+    setHtmlProductDeatils(){
+        main.insertAdjacentHTML('beforeend', '<div class="product-content">')
+    }
 }
 
 export const manager = new Products();
