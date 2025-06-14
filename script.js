@@ -8,26 +8,29 @@ export const main = document.querySelector('.main');
 if(productsContent){
     productsContent.addEventListener('click', (e) => {
     const product = e.target.closest('li');
-    
 
     if(product){
-        const productID = product.id;
-        throttleFunc(productID);
+        const productID = e.target.closest('li').id;
         manager.removeProducts();
         manager.setHtmlProductDeatils();
      
         const productDetails = main.querySelector('.product-content');
+        manager.getExtraProductsImg(productID);
         manager.displayProductDetails(productDetails);
+       
     }
 })
 }
+main.addEventListener('click', (e) => {
+    const productImg = main.querySelector('.productImg');
+    const clickedImg = e.target.closest('img').src;
 
-const throttleFunc = throttle(
-    1000,
-    (productID) => {
-        manager.findProduct(productID);
-    },
-    { noLeading: false, noTrailing: false }
-)
-
+    if(productImg){
+        productImg.src = clickedImg;
+    }
+    
+})
 if(productsContent) manager.getProducts();
+
+    
+
