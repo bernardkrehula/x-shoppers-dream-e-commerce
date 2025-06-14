@@ -4,15 +4,19 @@ import { manager } from './productsManager';
 
 export const productsContent = document.querySelector('.products-content');
 
-productsContent.addEventListener('click', () => {
-    throttleFunc();
-        
+productsContent.addEventListener('click', (e) => {
+    const product = e.target.closest('li');
+    const productID = product.id;
+
+    if(product){
+        throttleFunc(productID);
+    }
 })
 
 const throttleFunc = throttle(
     1000,
-    (num) => {
-        console.log('radi sada', num)
+    (productID) => {
+        manager.findProduct(productID);
     },
     { noLeading: false, noTrailing: false }
 )

@@ -16,9 +16,11 @@ class Products  {
             console.log('Greska kod dohvacanja proizvoda', error);
         }
     }
+    getClickedProduct {
+
+    }
 
     displayProuduct(product){
-        console.log(product)
         const html = `
             <li id="${product.id}">
                 <img src="${product.image}" alt="">
@@ -34,6 +36,9 @@ class Products  {
         this.products.forEach(product => {
             this.displayProuduct(product);
         })
+    }
+    findProduct(productID){
+        return this.products.find(product => product.id === productID);
     }
 
 }
