@@ -81,3 +81,9 @@ html {
     filter: brightness(0.85);
     transition: 0.2s ease-in-out;
 }
+.products-content {
+    display: grid;
+    gap: 40px;
+    grid-row-start: auto;
+    grid-template-columns: 2;
+}
