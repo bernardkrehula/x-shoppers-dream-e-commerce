@@ -15,8 +15,7 @@ if(productsContent){
         manager.setHtmlProductDeatils();
      
         const productDetails = main.querySelector('.product-content');
-        manager.getExtraProductsImg(productID);
-        manager.displayProductDetails(productDetails);
+        manager.displayProductDetails(productDetails, productID);
        
     }
 })
@@ -33,4 +32,3 @@ main.addEventListener('click', (e) => {
 if(productsContent) manager.getProducts();
 
     
-

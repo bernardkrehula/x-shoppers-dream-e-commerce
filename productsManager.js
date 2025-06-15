@@ -9,8 +9,8 @@ class Products  {
     getProducts = async() => {
         try{
             const fetchProuct = await fetch('https://www.course-api.com/react-store-products');
-            const proudtsData = await fetchProuct.json();
-            this.products = proudtsData;
+            const productsData = await fetchProuct.json();
+            this.products = productsData;
             this.iterateThroughProducts();
         }
         catch(error) {
@@ -21,9 +21,8 @@ class Products  {
         this.activeProduct = productID;
         try{
             const fetchProuct = await fetch(`https://www.course-api.com/react-store-single-product?id=${this.activeProduct}`);
-            const proudtsData = await fetchProuct.json();
-            this.activeProduct = proudtsData;
-            console.log(this.activeProduct)
+            const productsData = await fetchProuct.json();
+            this.activeProduct = productsData;
         }
         catch(error) {
             console.log('Greska kod dohvacanja proizvoda', error);
@@ -47,12 +46,10 @@ class Products  {
             this.displayProuduct(product);
         })
     }
-    displayProductDetails = async(productDetails) => {
-        await this.getExtraProductsImg();
+    displayProductDetails = async(productDetails, productID) => {
+        await this.getExtraProductsImg(productID);
         const product = this.activeProduct;
-        const imagesList = product.images
-            .map(img => `<li><img src="${img.url}" alt=""></li>`)
-            .join('');
+        const imagesList = product.images.map(img => `<li><img src="${img.url}" alt=""></li>`).join('');
         const html = `
         <div class="backBtn">
                 <button>Back to Products</button>
